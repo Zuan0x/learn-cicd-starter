@@ -1,16 +1,16 @@
 package auth
 
 import (
-	"testing"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
+	"testing"
 )
 
 func TestAuth(t *testing.T) {
-	type test struct {	
+	type test struct {
 		header http.Header
-		want string
+		want   string
 	}
 
 	tests := make([]test, 5)
@@ -20,11 +20,11 @@ func TestAuth(t *testing.T) {
 	for i, header := range headers {
 		istr := strconv.Itoa(i)
 		r := httptest.NewRequest("GET", "http://localhost:8000", nil)
-		r.Header.Add("Authorization", "ApiKey " + istr)
+		r.Header.Add("Authorization", "ApiKey "+istr)
 		header = r.Header
-		tests[i] = test {
+		tests[i] = test{
 			header: header,
-			want: istr,
+			want:   istr,
 		}
 	}
 
