@@ -5,6 +5,12 @@ on:
     branches: [main]
 
 jobs:
+  style:
+    name: Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: format go code
+        run: test -z $(go fmt ./...)
   tests:
     name: Tests
     runs-on: ubuntu-latest
